@@ -13,7 +13,7 @@ export const Select = ({
                            onChange, onChangeOption,
                            ...restProps
                        }: SuperSelectPropsType) => {
-    const mappedOptions: any[] = options ? options.map(o => <option value={o} key={o}>{o}</option>) : []; // map options with key
+    const mappedOptions: any[] = options ? options.map(o => <option value={o} key={o}>{o}</option>) : [];
 
     const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
         onChange && onChange(e)

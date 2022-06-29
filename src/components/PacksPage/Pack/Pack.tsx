@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Pack.module.scss'
+import {useNavigate} from "react-router-dom";
 
 type createdUserType = {
     "surname": string,
@@ -36,6 +37,8 @@ export type PackPropsType = {
 }
 export const Pack = ({data}: PackPropsType) => {
 
+    const navigate = useNavigate()
+
     const dateHandler = function timeConverter(date_unix: number) {
         const a = new Date(date_unix);
         const year = a.getFullYear();
@@ -65,9 +68,13 @@ export const Pack = ({data}: PackPropsType) => {
         }
     }
 
+    const openItem = () => {
+        navigate(`/item/${data.id}`)
+    }
+
     return (
         <>
-            <tr className={styles.packRow}>
+            <tr className={styles.packRow} onClick={openItem}>
                 <td className={styles.tdItemBlock}>
                     <div className={styles.tdItem}>
                         <span className={styles.name}>№{data.id}</span>

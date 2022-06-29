@@ -1,10 +1,18 @@
 import React from 'react';
-import {PacksPage} from "./components/Packs/PacksPage";
+import {PacksPage} from "./components/PacksPage/PacksPage";
+import {HashRouter, Navigate, Routes, Route} from "react-router-dom";
+import {PackPage} from "./components/PackPage/PackPage";
 
 function App() {
     return (
         <div>
-            <PacksPage/>
+            <HashRouter>
+                <Routes>
+                    <Route path={'/'} element={<Navigate to={'/packs'}/>}/>
+                    <Route path={'/packs'} element={<PacksPage/>}/>
+                    <Route path={'/item/*'} element={<PackPage/>}/>
+                </Routes>
+            </HashRouter>
         </div>
     );
 }

@@ -32,6 +32,7 @@ type ItemType = {
 
 export const PacksPage = () => {
     const [items, setItems] = useState<Array<ItemType>>(testArr)
+    const [sortedItems, setSortedItems] = useState<Array<ItemType>>(testArr)
     const [sortId, setSortId] = useState<boolean>(false)
     const [sortTask, setSortTask] = useState<boolean>(false)
     const [sortAccount, setSortAccount] = useState<boolean>(false)
@@ -51,38 +52,50 @@ export const PacksPage = () => {
         count: testArr.length,
     });
 
-    const sortHandler = (sortBy: string, e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
+    const sortHandler = (e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
         if (e.currentTarget.dataset.sort === 'id') {
             setSortId(!sortId)
+            setSortTask(false)
+            setSortAccount(false)
+            setSortStatus(false)
             if (sortId) {
-                setItems(items.sort((a, b) => a.id > b.id ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.id > b.id ? 1 : -1)])
             } else {
-                setItems(items.sort((a, b) => a.id < b.id ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.id < b.id ? 1 : -1)])
             }
         } else if (e.currentTarget.dataset.sort === 'task') {
+            setSortId(false)
             setSortTask(!sortTask)
+            setSortAccount(false)
+            setSortStatus(false)
             if (sortTask) {
-                setItems(items.sort((a, b) => a.order_type.name > b.order_type.name ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.order_type.name > b.order_type.name ? 1 : -1)])
             } else {
-                setItems(items.sort((a, b) => a.order_type.name < b.order_type.name ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.order_type.name < b.order_type.name ? 1 : -1)])
             }
         } else if (e.currentTarget.dataset.sort === 'account') {
+            setSortId(false)
+            setSortTask(false)
             setSortAccount(!sortAccount)
+            setSortStatus(false)
             if (sortAccount) {
-                setItems(items.sort((a, b) => a.account.name > b.account.name ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.account.name > b.account.name ? 1 : -1)])
             } else {
-                setItems(items.sort((a, b) => a.account.name < b.account.name ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.account.name < b.account.name ? 1 : -1)])
             }
         } else if (e.currentTarget.dataset.sort === 'status') {
+            setSortId(false)
+            setSortTask(false)
+            setSortAccount(false)
             setSortStatus(!sortStatus)
             if (sortStatus) {
-                setItems(items.sort((a, b) => a.status > b.status ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.status > b.status ? 1 : -1)])
             } else {
-                setItems(items.sort((a, b) => a.status < b.status ? 1 : -1))
+                setSortedItems([...items.sort((a, b) => a.status < b.status ? 1 : -1)])
             }
         }
     }
-
+    console.log(sortedItems)
     return (
         <>
             <div className={styles.tableWrapper}>
@@ -90,30 +103,37 @@ export const PacksPage = () => {
                     <thead>
                     <tr>
                         <th
-                            onClick={(e) => sortHandler('id', e)}
+                            onClick={(e) => sortHandler(e)}
                             data-sort='id'>
-                            Номер / Дата {sortId ? <span>&#9662;</span> : <span>&#9652;</span>}
+                            Номер / Дата {sortId
+                            ? <span>&#9662;</span>
+                            : <span>&#9652;</span>}
                         </th>
                         <th
-                            onClick={(e) => sortHandler('task', e)}
+                            onClick={(e) => sortHandler(e)}
                             data-sort='task'>
-                            Тип задания / Автор {sortTask ? <span>&#9662;</span> : <span>&#9652;</span>}
-                            {/*<FontAwesomeIcon icon={countDir}/>*/}
+                            Тип задания / Автор {sortTask
+                            ? <span>&#9662;</span>
+                            : <span>&#9652;</span>}
                         </th>
                         <th
-                            onClick={(e) => sortHandler('account', e)}
+                            onClick={(e) => sortHandler(e)}
                             data-sort='account'>
-                            Аккаунт / Терминал {sortAccount ? <span>&#9662;</span> : <span>&#9652;</span>}
+                            Аккаунт / Терминал {sortAccount
+                            ? <span>&#9662;</span>
+                            : <span>&#9652;</span>}
                         </th>
                         <th
-                            onClick={(e) => sortHandler('status', e)}
+                            onClick={(e) => sortHandler(e)}
                             data-sort='status'>
-                            Статус {sortStatus ? <span>&#9662;</span> : <span>&#9652;</span>}
+                            Статус {sortStatus
+                            ? <span>&#9662;</span>
+                            : <span>&#9652;</span>}
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    {items.slice(firstContentIndex, lastContentIndex).map((t) => <Pack key={t.id} data={t}/>)}
+                    {sortedItems.slice(firstContentIndex, lastContentIndex).map((t) => <Pack key={t.id} data={t}/>)}
                     </tbody>
                 </table>
             </div>

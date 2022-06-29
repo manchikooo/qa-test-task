@@ -2,20 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
 
   .page {
-    color: white;
-    height: 35px;
-    width: 35px;
+    color: black;
+    height: 36px;
+    min-width: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     border: solid 2px #f2bf93;
-    background-color: #f2bf93;
-    border-radius: 15px;
+    border-radius: 50%;
+    background-color: white;
     cursor: pointer;
     &.active,
     &:hover {
@@ -24,6 +25,7 @@
     }
   }
   .navPageButton {
-    width: 60px;
+    min-width: 80px;
+    border-radius: 18px;
   }
 }

@@ -4,7 +4,7 @@ export const testArr = [
         "oguid": "6180f3cef0d1e845bd488e06",
         "status": "new",
         "order_type": {
-            "name": "Безвозвратное изъятие документов",
+            "name": "ЯБезвозвратное изъятие документов",
             "oguid": "6180f3cef0d1e845bd488d6e"
         },
         "terminal": {

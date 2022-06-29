@@ -28,7 +28,7 @@ export const Paginator = (
     return (
         <div className={styles.pagination}>
             <button onClick={prevPage} className={`${styles.page} ${styles.navPageButton}`}>
-                Prev Page
+                Prev&nbsp;Page
             </button>
             {/* @ts-ignore */}
             {[...Array(totalPages).keys()].map((el) => (
@@ -41,7 +41,7 @@ export const Paginator = (
                 </button>
             ))}
             <button onClick={nextPage} className={`${styles.page} ${styles.navPageButton}`}>
-                Next Page
+                Next&nbsp;Page
             </button>
             <Select options={itemsCounts}
                     value={contentPerPage}

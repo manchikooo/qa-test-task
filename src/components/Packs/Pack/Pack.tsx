@@ -8,7 +8,7 @@ type createdUserType = {
     "oguid": string
 }
 
-type PackPropsType = {
+export type PackPropsType = {
     data: {
         "id": number,
         "oguid": string,

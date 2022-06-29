@@ -1,13 +1,11 @@
 
 .tableWrapper {
-  //background-color: $mainBGC;
   padding: 10px 40px;
   overflow-x: auto;
 
   //для mozila
   scrollbar-color: #f2bf93 #f2bf93;
   scrollbar-width: 10px;
-
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -43,6 +41,7 @@
         font-size: 15px;
         text-align: left;
         padding: 0 15px 10px 15px;
+        white-space: nowrap;
 
         &:hover {
           cursor: pointer;

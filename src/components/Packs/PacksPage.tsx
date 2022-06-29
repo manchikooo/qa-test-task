@@ -3,12 +3,11 @@ import styles from "./PacksPage.module.scss";
 import Pack from "./Pack/Pack";
 import {testArr} from "../../testArr";
 import {usePagination} from "../../hooks/usePagination";
-import {Select} from "../Select/Select";
+import {Paginator} from "../Paginator/Paginator";
 
 export const PacksPage = () => {
 
     const [contentPerPage, setContentPerPage] = useState<number>(10)
-
     const {
         firstContentIndex,
         lastContentIndex,
@@ -21,11 +20,6 @@ export const PacksPage = () => {
         contentPerPage,
         count: testArr.length,
     });
-
-    const contentPerPageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // setContentPerPage(e)
-        console.log(e)
-    }
 
     return (
         <>
@@ -68,30 +62,15 @@ export const PacksPage = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="pagination">
-                <p className="text">
-                    {page}/{totalPages}
-                </p>
-                <button onClick={prevPage} className="page">
-                    &larr;
-                </button>
-                {/* @ts-ignore */}
-                {[...Array(totalPages).keys()].map((el) => (
-                    <button
-                        onClick={() => setPage(el + 1)}
-                        key={el}
-                        className={`page ${page === el + 1 ? "active" : ""}`}
-                    >
-                        {el + 1}
-                    </button>
-                ))}
-                <button onClick={nextPage} className="page">
-                    &rarr;
-                </button>
-               {/*<Select options={testArr}*/}
-               {/*        value={10}*/}
-               {/*        onChangeOption={contentPerPageHandler}/>*/}
-            </div>
+            <Paginator
+                nextPage={nextPage}
+                prevPage={prevPage}
+                page={page}
+                setPage={setPage}
+                totalPages={totalPages}
+                contentPerPage={contentPerPage}
+                setContentPerPage={setContentPerPage}
+            />
         </>
     );
 };

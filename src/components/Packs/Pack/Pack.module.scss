@@ -26,9 +26,11 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      white-space: nowrap;
 
       .name {
         font-weight: 600;
+
       }
 
       .subname {

@@ -10,8 +10,6 @@ export const usePagination = ({contentPerPage, count}: usePaginationType) => {
     const pageCount = Math.ceil(count / contentPerPage);
     const lastContentIndex = page * contentPerPage;
     const firstContentIndex = lastContentIndex - contentPerPage;
-    console.log('last',lastContentIndex)
-    console.log('first',firstContentIndex)
 
     const changePage = (direction: boolean) => {
         setPage((state) => {

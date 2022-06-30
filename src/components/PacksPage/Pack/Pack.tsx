@@ -89,8 +89,8 @@ export const Pack = ({data}: PackPropsType) => {
                 </td>
                 <td className={styles.tdItemBlock}>
                     <div className={styles.tdItem}>
-                        <span className={styles.name}>{data.account.name}</span>
-                        <span className={styles.subname}>{data.terminal.name}</span>
+                        <span className={`${styles.name} ${styles.account}`}>{data.account.name}</span>
+                        <span className={`${styles.subname} ${styles.terminal}`}>{data.terminal.name}</span>
                     </div>
                 </td>
                 <td className={styles.tdItemBlock}>

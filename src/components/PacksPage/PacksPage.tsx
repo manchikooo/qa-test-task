@@ -95,7 +95,6 @@ export const PacksPage = () => {
             }
         }
     }
-    console.log(sortedItems)
     return (
         <>
             <div className={styles.tableWrapper}>

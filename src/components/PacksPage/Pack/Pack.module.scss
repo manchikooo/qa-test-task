@@ -30,14 +30,24 @@
 
       .name {
         font-weight: 600;
-
+        &.account {
+          width: calc(60%);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
 
       .subname {
         color: #535353;
+        &.terminal {
+          width: calc(60%);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
   }
+
   .status {
     color: white;
     font-weight: 600;
@@ -45,18 +55,23 @@
     padding: 5px 10px;
     min-width: 89px;
     text-align: center;
+
     &.new {
       background-color: #A83638;
     }
+
     &.started {
       background-color: #2861A1;
     }
+
     &.completed {
       background-color: #359626;
     }
+
     &.assigned_to {
       background-color: #BA7F1A;
     }
+
     &.declined {
       background-color: #1C1C1C;
     }
